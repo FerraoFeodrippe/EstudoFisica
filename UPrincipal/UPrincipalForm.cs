@@ -16,12 +16,32 @@ namespace UPrincipal
     public partial class UPrincialForm : Form
     {
         private readonly MovimentoSuave _modulo;
+        private Action<Region> _updateAction;
 
         public UPrincialForm()
         {
             InitializeComponent();
             Visor.Image = new Bitmap(Visor.Width, Visor.Height);
-            _modulo = new MovimentoSuave(Visor.Image, 1);
+            SetUpdateAction();
+
+            _modulo = new MovimentoSuave(Visor.Image, _updateAction, 1);
+        }
+
+        private void SetUpdateAction()
+        {
+            _updateAction = new Action<Region>((region) =>
+                Visor.Invoke(new Action(() => 
+                {
+                    if (region != null)
+                    {
+                        Visor.Invalidate(region);
+                        Visor.Update();
+                    }
+                    else
+                    {
+                        Visor.Refresh();
+                    }
+                })));
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,7 +63,6 @@ namespace UPrincipal
             {
                 _modulo.AdicionarPonto(new Vector2(e.X, e.Y));
                 _modulo.Atualizar();
-                Visor.Invoke(new Action(() => { Visor.Refresh(); }));
             }
         }
 
@@ -54,7 +73,6 @@ namespace UPrincipal
             {
                 _modulo.AdicionarPonto(new Vector2(e.X, e.Y));
                 _modulo.Atualizar();
-                Visor.Invoke(new Action(() => { Visor.Refresh(); }));
             }
         }
     }

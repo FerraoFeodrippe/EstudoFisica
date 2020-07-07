@@ -13,13 +13,21 @@ namespace EstudoFisica.Graficos.Core
         private readonly Bitmap _imagem;
         private Color _corAtual;
         private Color _corTransparente;
+        private Action<Region> _updateAction;
+        private Region _region;
 
-        public GerenciadorGrafico(Bitmap imagem, Color? corAtual = null , Color? corTransparente = null)
+        private int _pixelSize;
+
+        public GerenciadorGrafico(Bitmap imagem, Action<Region> updateAction, Color? corAtual = null , Color? corTransparente = null)
         {
             _imagem = imagem;
+            _updateAction = updateAction;
+            _region = new Region();
             _corAtual = corAtual == null ? Color.WhiteSmoke : corAtual.Value;
             _corTransparente = corTransparente == null ? Color.Black : corTransparente.Value;
             _imagem.MakeTransparent(_corTransparente);
+
+            _pixelSize = 1;
         }
 
         public void MudarCorAtual(Color cor)
@@ -42,13 +50,18 @@ namespace EstudoFisica.Graficos.Core
             if (x >= 0 && y >=0 && x < _imagem.Width && y < _imagem.Height)
             {
                 _imagem.SetPixel(x, y, cor == null? _corAtual : cor.Value);
+                _region.Union(new Region(new Rectangle(x, y, 1, 1) ));
             }
 
+        }
+        public void Update()
+        {
+            _updateAction.Invoke(_region);
         }
 
         public void RemoverPixel(Vector2 p)
         {
-            DesenharPixel((int)p.X, (int)p.Y, _corTransparente);
+            RemoverPixel((int)p.X, (int)p.Y);
         }
 
         public void RemoverPixel(int x, int y)

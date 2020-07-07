@@ -16,16 +16,17 @@ namespace EstudoFisica.Modulos.VelocidadeConstante.PontosLineares
         private readonly GerenciadorPontos _gerenciador;
         private int _delay;
         private GerenciadorGrafico _grafico;
+        
 
         private readonly object __lock;
 
-        public MovimentoSuave(Image image, int delay = 100)
+        public MovimentoSuave(Image image, Action<Region> updateAction, int delay = 100)
         {
             _delay = delay;
             __lock = new object();
             _gerenciador = new GerenciadorPontos();
-
-            _grafico = new GerenciadorGrafico((Bitmap) image);
+            
+            _grafico = new GerenciadorGrafico((Bitmap) image, updateAction);
         }
 
         public void AdicionarPonto(Vector2 ponto)
@@ -55,6 +56,7 @@ namespace EstudoFisica.Modulos.VelocidadeConstante.PontosLineares
 
         public void Start()
         {
+
         }
 
         public void Atualizar()
@@ -70,6 +72,7 @@ namespace EstudoFisica.Modulos.VelocidadeConstante.PontosLineares
             {
                 pontos = _gerenciador.PontosAtuais();
                 _grafico.DesenharLinhas(pontos.ToArray());
+                _grafico.Update();
             }
 
         }
