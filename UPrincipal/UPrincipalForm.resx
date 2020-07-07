@@ -121,6 +121,30 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="carregarMóduloToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="carregarMóduloToolStripMenuItem.Text" xml:space="preserve">
+    <value>Carregar Módulo</value>
+  </data>
+  <data name="sairToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="sairToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sair</value>
+  </data>
+  <data name="açõesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
+  </data>
+  <data name="açõesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ações</value>
+  </data>
+  <data name="opçõesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="opçõesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Opções</value>
+  </data>
   <data name="MenuPrincial.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -145,30 +169,6 @@
   </data>
   <data name="&gt;&gt;MenuPrincial.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="açõesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="açõesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ações</value>
-  </data>
-  <data name="carregarMóduloToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="carregarMóduloToolStripMenuItem.Text" xml:space="preserve">
-    <value>Carregar Módulo</value>
-  </data>
-  <data name="sairToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="sairToolStripMenuItem.Text" xml:space="preserve">
-    <value>Sair</value>
-  </data>
-  <data name="opçõesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="opçõesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Opções</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Visor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">

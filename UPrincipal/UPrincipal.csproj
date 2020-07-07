@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,6 +85,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Recursos\Icones\Everaldo-Crystal-Clear-App-katomic-atom.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EstudoFisica.Modulo.VelocidadeConstante\EstudoFisica.Modulos.csproj">
+      <Project>{CCA2CFED-DA19-47A0-929E-AD8B1EEEBDA1}</Project>
+      <Name>EstudoFisica.Modulos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GerenciamentoPontos\EstudoFisica.Pontos.csproj">
+      <Project>{9710932A-496C-45AB-87C4-4C2E9D891183}</Project>
+      <Name>EstudoFisica.Pontos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

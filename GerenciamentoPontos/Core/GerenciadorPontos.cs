@@ -30,17 +30,17 @@ namespace EstudoFisica.Pontos.Core
             }
         }
 
-        public IEnumerable<ISet<Vector2>> TodosPontos()
+        public IEnumerable<IList<Vector2>> TodosPontos()
         {
             foreach (var conjunto in _conjuntoPontos)
             {
-                yield return new HashSet<Vector2>(conjunto.Value);
+                yield return new List<Vector2>(conjunto.Value);
             }
         }
 
-        public ISet<Vector2> PontosAtuais()
+        public IList<Vector2> PontosAtuais()
         {
-            return new HashSet<Vector2>(_pontosAtuais);
+            return new List<Vector2>(_pontosAtuais);
         }
 
         public void MudarConjunto(int conjunto)

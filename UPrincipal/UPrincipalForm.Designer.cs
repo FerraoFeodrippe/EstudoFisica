@@ -77,6 +77,8 @@
             resources.ApplyResources(this.Visor, "Visor");
             this.Visor.Name = "Visor";
             this.Visor.TabStop = false;
+            this.Visor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Visor_MouseDown);
+            this.Visor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Visor_MouseMove);
             // 
             // UPrincialForm
             // 
@@ -88,6 +90,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MainMenuStrip = this.MenuPrincial;
             this.Name = "UPrincialForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UPrincialForm_KeyDown);
             this.MenuPrincial.ResumeLayout(false);
             this.MenuPrincial.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Visor)).EndInit();
