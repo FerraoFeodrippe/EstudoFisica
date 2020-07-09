@@ -16,7 +16,7 @@ namespace UPrincipal
     public partial class UPrincialForm : Form
     {
         private readonly MovimentoSuave _modulo;
-        private Action<Region> _updateAction;
+        private Action _updateAction;
 
         public UPrincialForm()
         {
@@ -24,23 +24,16 @@ namespace UPrincipal
             Visor.Image = new Bitmap(Visor.Width, Visor.Height);
             SetUpdateAction();
 
-            _modulo = new MovimentoSuave(Visor.Image, _updateAction, 1);
+            _modulo = new MovimentoSuave(Visor.Image, _updateAction, 30);
         }
 
         private void SetUpdateAction()
         {
-            _updateAction = new Action<Region>((region) =>
+            _updateAction = new Action(() =>
                 Visor.Invoke(new Action(() => 
                 {
-                    if (region != null)
-                    {
-                        Visor.Invalidate(region);
-                        Visor.Update();
-                    }
-                    else
-                    {
+                       // Visor.Update();
                         Visor.Refresh();
-                    }
                 })));
         }
 
@@ -53,7 +46,7 @@ namespace UPrincipal
         {
             if (e.KeyCode == Keys.Space)
             {
-
+                _modulo.Start();
             }
         }
 
