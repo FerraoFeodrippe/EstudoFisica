@@ -47,7 +47,6 @@ namespace EstudoFisica.Modulos.VelocidadeConstante.PontosLineares
         {
             lock(__lock)
             {
-                Console.WriteLine(ponto);
                 _gerenciador.AdicionarPonto(ponto);
             }
             
@@ -89,7 +88,6 @@ namespace EstudoFisica.Modulos.VelocidadeConstante.PontosLineares
                 _pontoAtual = 0;
                 _posicaoObjetoAtual = pontos[0];
             }
-
             while (pontos.Count > _pontoAtual)
             {
                 lock (__lock)
@@ -121,7 +119,6 @@ namespace EstudoFisica.Modulos.VelocidadeConstante.PontosLineares
 
                 if (pontos.Count > _pontoAtual)
                 {
-
                     var pontoAtual = pontos[_pontoAtual];
                     _posicaoObjetoAnterior = _posicaoObjetoAtual;
 
@@ -141,17 +138,19 @@ namespace EstudoFisica.Modulos.VelocidadeConstante.PontosLineares
                             CalculaFy(_posicaoObjetoAtual.Y + _unidadeAtual * fator, pontoAtual.Y, pontoAtual.X, a);
 
                         _posicaoObjetoAtual = p;
-
+                
                         Console.WriteLine(p);
 
-                        if (Math.Abs(dif.X) >= Math.Abs(dif.Y)  && (_posicaoObjetoAtual.X >= proximoPonto.X && fator > 0 || _posicaoObjetoAtual.X <= proximoPonto.X && fator < 0))
+                        if (Math.Abs(dif.X) >= Math.Abs(dif.Y)  && (_posicaoObjetoAtual.X > proximoPonto.X && fator > 0 || _posicaoObjetoAtual.X < proximoPonto.X && fator < 0))
                         {
                             _pontoAtual++;
+                            _posicaoObjetoAtual = pontos[_pontoAtual];
                         }
 
-                        if (Math.Abs(dif.X) < Math.Abs(dif.Y) && (_posicaoObjetoAtual.Y >= proximoPonto.Y && fator > 0 || _posicaoObjetoAtual.Y <= proximoPonto.Y && fator < 0))
+                        if (Math.Abs(dif.X) < Math.Abs(dif.Y) && (_posicaoObjetoAtual.Y > proximoPonto.Y && fator > 0 || _posicaoObjetoAtual.Y < proximoPonto.Y && fator < 0))
                         {
                             _pontoAtual++;
+                            _posicaoObjetoAtual = pontos[_pontoAtual];
                         }
 
                         if (_posicaoObjetoAnterior != _posicaoObjetoAtual)
